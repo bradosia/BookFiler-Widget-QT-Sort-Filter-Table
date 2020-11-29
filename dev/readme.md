@@ -8,9 +8,14 @@ I already started on the code. See the header I started for how to use each meth
 
 Program must compile on Windows and Linux. For Windows, use MinGW for compiling. For Linux use GCC. Use cmake as the build scipt. Personally, the IDE I use is QT Creator, but any should work as long as you can build with cmake.
 
-## `QTreeView` column dynamic sizing
+## `QTableView` column dynamic sizing
 
-The `QTreeView` columns must be dynamically created to be the same as the `sqlite3` table passed to the widget. You must use an SQL query to detect the columns in the table and dynamically create a view for it. `sqlite3` table must have the columns `guid` and `guid_parent` (the name of the column can be different, the columns must have the same purpose) so that the tree view children can be built off this. 
+The `QTableView` columns must be dynamically created to be the same as the `sqlite3` table passed to the widget. You must use an SQL query to detect the columns in the table and dynamically create a view for it. 
+Example SQL query for getting column names in a table named `QTableTable`:
+```sql
+SELECT name FROM pragma_table_info('QTableTable');
+```
+`sqlite3` table must have the columns `guid` and `guid_parent` (the name of the column can be different, the columns must have the same purpose) so that the tree view children can be built off this. 
 
 For example, I should be able to connect any database that is set up with columns `guid` and `guid_parent`:
 ```cpp
