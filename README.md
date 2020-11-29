@@ -1,5 +1,5 @@
 # BookFiler Widget w/ QT: Sort Filter Tree Widget
-This is a QT5 widget that creates a `QTreeView` with sorting, filtering, and item selection functionality with a `sqlite3` backend.
+This is a QT5 widget that creates a `QTableView` with sorting, filtering, and item selection functionality with a `sqlite3` backend.
 
 # Usage Instructions
 
@@ -12,7 +12,7 @@ std::shared_ptr<sqlite3> database(nullptr);
 database.reset(dbPtr, sqlite3_close);
 ```
 
-Create the tree widget and set the database data
+Create the table widget and set the database data
 ```cpp
 std::shared_ptr<bookfiler::widget::TableImpl> tableWidget =
       std::make_shared<bookfiler::widget::TableImpl>();
