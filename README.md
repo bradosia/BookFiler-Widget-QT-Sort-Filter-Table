@@ -1,5 +1,5 @@
-# BookFiler Library: Sort Filter Tree Widget
-This is a QT5 widget that creates a `QTreeView` with sorting and filtering functionality with a `sqlite3` backend.
+# BookFiler Widget w/ QT: Sort Filter Tree Widget
+This is a QT5 widget that creates a `QTreeView` with sorting, filtering, and item selection functionality with a `sqlite3` backend.
 
 # Usage Instructions
 
@@ -14,30 +14,15 @@ database.reset(dbPtr, sqlite3_close);
 
 Create the tree widget and set the database data
 ```cpp
-std::shared_ptr<bookfiler::widget::TreeImpl> treeWidget =
-      std::make_shared<bookfiler::widget::TreeImpl>();
-treeWidget->setData(database, "testTable", "guid", "parent_guid");
-treeWidget->setRoot("*"); 
-treeWidget->update();
+std::shared_ptr<bookfiler::widget::TableImpl> tableWidget =
+      std::make_shared<bookfiler::widget::TableImpl>();
+tableWidget->setData(database, "testTable", "guid");
+tableWidget->update();
 ```
 
 ## Table format
 
-This widget will work with any sqlite3 table as long as there is a `guid` and `parent_guid` column. The  `guid` is a unique id for the row and the `parent_guid` will be the parent id that the row will be a child of.
-
-## Examples 
-
-### Style 1
-
-columns: guid, parent_guid, Subject, Important, Attachment, From, Date, Size
-
-![Style 1](https://github.com/bradosia/BookFiler-Lib-Sort-Filter-Tree-Widget/blob/main/dev/tree-view-design-1.png?raw=true)
-
-### Style 2
-
-columns: guid, parent_guid, Name
-
-![Style 2](https://github.com/bradosia/BookFiler-Lib-Sort-Filter-Tree-Widget/blob/main/dev/tree-view-design-2.png?raw=true)
+This widget will work with any sqlite3 table as long as there is a `guid` column. The  `guid` is a unique id for the row.
 
 # Build Instructions
 
